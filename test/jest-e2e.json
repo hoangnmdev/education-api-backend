@@ -1,0 +1,27 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "collectCoverage": true,
+  "coverageDirectory": "./coverage",
+  "coverageReporters": ["text", "lcov"],
+  "moduleNameMapper": {
+    "^src/(.*)$": "<rootDir>/src/$1"
+  },
+  "coveragePathIgnorePatterns": [
+    "/node_modules/",
+    "^src/database/",
+    "^src/database/config/",
+    "^src/database/migrations/"
+  ],
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "^src/database/",
+    "^src/database/config/",
+    "^src/database/migrations/"
+  ]
+}
