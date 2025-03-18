@@ -21,13 +21,12 @@ This project is built using a robust tech stack for optimal performance and scal
 ### 4.1. Prerequisites
 - Node.js v22.14.0
 - Docker
-- Postman
 
 ### 4.2. Installation
 To install the project, follow these steps:
 
 ```bash
-git clone https://github.com/hoangnmdev/education-api.git
+git clone https://github.com/hoangnmdev/education-api-backend.git
 cd education-api
 ```
 
@@ -85,7 +84,7 @@ npm run migration:run
 ### 5.2. Seeding
 To run for seeding:
 ```bash
-npm run seed:run
+npm run seed
 ```
 ### 5.3. Start application in development mode
 ```bash
