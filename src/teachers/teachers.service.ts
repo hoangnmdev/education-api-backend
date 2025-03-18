@@ -124,30 +124,31 @@ export class TeacherService {
   };
 
   retrieveNotifications = async (
-    retrieveNotfication: RetrieveNotificationRequestDto,
+    retrieveNotification: RetrieveNotificationRequestDto,
   ): Promise<RetrieveNotificationsResponseDto> => {
-    const mentionedStudents = RequestUtils.extractMentionedStudents(
-      retrieveNotfication.notification,
+    const { teacher, notification } = retrieveNotification;
+
+    const mentionedStudents =
+      RequestUtils.extractMentionedStudents(notification);
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    const validMentionedStudents = mentionedStudents.filter((email) =>
+      gmailRegex.test(email),
     );
 
-    const commonStudents = await this.getCommonStudents([
-      retrieveNotfication.teacher,
-    ]);
+    const commonStudents = await this.getCommonStudents([teacher]);
+
+    const combinedEmails = Array.from(
+      new Set([...commonStudents.student, ...validMentionedStudents]),
+    );
 
     const studentEntities = await this.studentRepository.find({
-      where: { email: In(commonStudents.student) },
+      where: { email: In(combinedEmails) },
     });
 
-    const notSuspenedStudents = studentEntities
+    const activeStudents = studentEntities
       .filter((student) => !student.isSuspended)
       .map((student) => student.email);
 
-    const uniqueRecipients = new Set([
-      ...mentionedStudents,
-      ...notSuspenedStudents,
-    ]);
-    const recipients = Array.from(uniqueRecipients);
-
-    return { recipients };
+    return { recipients: activeStudents };
   };
 }

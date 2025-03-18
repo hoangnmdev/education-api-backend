@@ -4,6 +4,7 @@ export const ERROR_MESSAGES = {
   STUDENT_NOT_FOUND: 'Student not found.',
   UNPROCESSABLE_ENTITY: 'Unprocessable entity.',
   STUDENT_ALREADY_REGISTERED: 'Student already registered.',
+  INVALID_EMAIL: 'Invalid email.',
 } as const;
 
 export const DATABASE_CONNECTED_MESSAGE = {
