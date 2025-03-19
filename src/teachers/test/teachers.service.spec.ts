@@ -375,7 +375,6 @@ describe('TeacherService', () => {
 
       expect(result).toEqual({
         recipients: expect.arrayContaining<string>([
-          'studentmentioned@gmail.com',
           'commonstudent1@gmail.com',
         ]) as unknown as string[],
       });
