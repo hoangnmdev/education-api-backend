@@ -123,32 +123,30 @@ export class TeacherService {
     await this.studentRepository.save({ ...student, isSuspended: true });
   };
 
-  retrieveNotifications = async (
-    retrieveNotification: RetrieveNotificationRequestDto,
-  ): Promise<RetrieveNotificationsResponseDto> => {
-    const { teacher, notification } = retrieveNotification;
-
-    const mentionedStudents =
-      RequestUtils.extractMentionedStudents(notification);
-    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-    const validMentionedStudents = mentionedStudents.filter((email) =>
-      gmailRegex.test(email),
-    );
+  async retrieveNotifications({
+    teacher,
+    notification,
+  }: RetrieveNotificationRequestDto): Promise<RetrieveNotificationsResponseDto> {
+    const validMentionedStudents = RequestUtils.extractMentionedStudents(
+      notification,
+    ).filter((email) => /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email));
 
     const commonStudents = await this.getCommonStudents([teacher]);
 
-    const combinedEmails = Array.from(
+    const uniqueEmails = Array.from(
       new Set([...commonStudents.student, ...validMentionedStudents]),
     );
 
-    const studentEntities = await this.studentRepository.find({
-      where: { email: In(combinedEmails) },
+    const activeStudentEntities = await this.studentRepository.find({
+      where: {
+        email: In(uniqueEmails),
+        isSuspended: false,
+      },
+      select: ['email'],
     });
 
-    const activeStudents = studentEntities
-      .filter((student) => !student.isSuspended)
-      .map((student) => student.email);
+    const recipients = activeStudentEntities.map((student) => student.email);
 
-    return { recipients: activeStudents };
-  };
+    return { recipients };
+  }
 }
