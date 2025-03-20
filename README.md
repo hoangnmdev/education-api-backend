@@ -19,382 +19,75 @@
 
 ## Project Structure
 
-```
-└─ education-api
-   ├─ .dockerignore
-   ├─ .env
-   ├─ .env.example
-   ├─ .husky
-   │  └─ _
-   │     ├─ applypatch-msg
-   │     ├─ commit-msg
-   │     ├─ h
-   │     ├─ husky.sh
-   │     ├─ post-applypatch
-   │     ├─ post-checkout
-   │     ├─ post-commit
-   │     ├─ post-merge
-   │     ├─ post-rewrite
-   │     ├─ pre-applypatch
-   │     ├─ pre-auto-gc
-   │     ├─ pre-commit
-   │     ├─ pre-merge-commit
-   │     ├─ pre-push
-   │     ├─ pre-rebase
-   │     └─ prepare-commit-msg
-   ├─ .prettierrc
-   ├─ coverage
-   │  ├─ clover.xml
-   │  ├─ coverage-final.json
-   │  ├─ lcov-report
-   │  │  ├─ base.css
-   │  │  ├─ block-navigation.js
-   │  │  ├─ constants
-   │  │  │  ├─ index.html
-   │  │  │  └─ index.ts.html
-   │  │  ├─ database
-   │  │  │  ├─ config
-   │  │  │  │  ├─ database.config.ts.html
-   │  │  │  │  └─ index.html
-   │  │  │  ├─ index.html
-   │  │  │  ├─ migrations
-   │  │  │  │  ├─ 1742182527991-InitSchema.ts.html
-   │  │  │  │  ├─ 1742265222995-InitSchema.ts.html
-   │  │  │  │  └─ index.html
-   │  │  │  ├─ seeds
-   │  │  │  │  └─ document
-   │  │  │  │     ├─ index.html
-   │  │  │  │     ├─ run-seed.ts.html
-   │  │  │  │     ├─ seed.module.ts.html
-   │  │  │  │     ├─ student
-   │  │  │  │     │  ├─ index.html
-   │  │  │  │     │  ├─ student-seed.module.ts.html
-   │  │  │  │     │  ├─ student-seed.service.ts.html
-   │  │  │  │     │  └─ student-seeed.service.ts.html
-   │  │  │  │     └─ teacher
-   │  │  │  │        ├─ index.html
-   │  │  │  │        ├─ teacher-seed.module.ts.html
-   │  │  │  │        └─ teacher-seed.service.ts.html
-   │  │  │  └─ typeorm-config.service.ts.html
-   │  │  ├─ favicon.png
-   │  │  ├─ filter
-   │  │  │  ├─ http-exception.filter.early.test
-   │  │  │  │  ├─ catch.early.test.ts.html
-   │  │  │  │  └─ index.html
-   │  │  │  ├─ http-exception.filter.ts.html
-   │  │  │  └─ index.html
-   │  │  ├─ index.html
-   │  │  ├─ prettify.css
-   │  │  ├─ prettify.js
-   │  │  ├─ sort-arrow-sprite.png
-   │  │  ├─ sorter.js
-   │  │  ├─ src
-   │  │  │  ├─ app.controller.ts.html
-   │  │  │  ├─ app.module.ts.html
-   │  │  │  ├─ app.service.ts.html
-   │  │  │  ├─ config
-   │  │  │  │  ├─ app.config.ts.html
-   │  │  │  │  └─ index.html
-   │  │  │  ├─ constants
-   │  │  │  │  ├─ index.html
-   │  │  │  │  └─ index.ts.html
-   │  │  │  ├─ database
-   │  │  │  │  ├─ config
-   │  │  │  │  │  ├─ database.config.ts.html
-   │  │  │  │  │  └─ index.html
-   │  │  │  │  ├─ data-source.ts.html
-   │  │  │  │  ├─ index.html
-   │  │  │  │  ├─ migrations
-   │  │  │  │  │  ├─ 1742031565048-InitSchema.ts.html
-   │  │  │  │  │  ├─ 1742182527991-InitSchema.ts.html
-   │  │  │  │  │  └─ index.html
-   │  │  │  │  ├─ seeds
-   │  │  │  │  │  └─ document
-   │  │  │  │  │     ├─ index.html
-   │  │  │  │  │     ├─ run-seed.ts.html
-   │  │  │  │  │     ├─ seed.module.ts.html
-   │  │  │  │  │     ├─ student
-   │  │  │  │  │     │  ├─ index.html
-   │  │  │  │  │     │  ├─ student-seed.module.ts.html
-   │  │  │  │  │     │  └─ student-seeed.service.ts.html
-   │  │  │  │  │     └─ teacher
-   │  │  │  │  │        ├─ index.html
-   │  │  │  │  │        ├─ teacher-seed.module.ts.html
-   │  │  │  │  │        └─ teacher-seed.service.ts.html
-   │  │  │  │  └─ typeorm-config.service.ts.html
-   │  │  │  ├─ filter
-   │  │  │  │  ├─ http-exception.filter.ts.html
-   │  │  │  │  └─ index.html
-   │  │  │  ├─ index.html
-   │  │  │  ├─ main.ts.html
-   │  │  │  ├─ student
-   │  │  │  │  ├─ dto
-   │  │  │  │  │  ├─ create-student.dto.ts.html
-   │  │  │  │  │  ├─ index.html
-   │  │  │  │  │  └─ update-student.dto.ts.html
-   │  │  │  │  ├─ entities
-   │  │  │  │  │  ├─ index.html
-   │  │  │  │  │  └─ student.entity.ts.html
-   │  │  │  │  ├─ index.html
-   │  │  │  │  └─ student.service.ts.html
-   │  │  │  ├─ teachers
-   │  │  │  │  ├─ dto
-   │  │  │  │  │  ├─ index.html
-   │  │  │  │  │  ├─ register-student-teacher.dto.ts.html
-   │  │  │  │  │  ├─ request
-   │  │  │  │  │  │  ├─ index.html
-   │  │  │  │  │  │  ├─ register-student-teacher.dto.ts.html
-   │  │  │  │  │  │  ├─ retrieve-notification-request.dto.ts.html
-   │  │  │  │  │  │  └─ suspend-student-teacher.dto.ts.html
-   │  │  │  │  │  ├─ response
-   │  │  │  │  │  │  ├─ get-common-student-teacher.dto.ts.html
-   │  │  │  │  │  │  ├─ index.html
-   │  │  │  │  │  │  └─ retrieve-notification-response.dto.ts.html
-   │  │  │  │  │  └─ suspend-student-teacher.dto.ts.html
-   │  │  │  │  ├─ entities
-   │  │  │  │  │  ├─ index.html
-   │  │  │  │  │  └─ teacher.entity.ts.html
-   │  │  │  │  ├─ index.html
-   │  │  │  │  ├─ teachers.controller.ts.html
-   │  │  │  │  ├─ teachers.module.ts.html
-   │  │  │  │  ├─ teachers.service.early.test
-   │  │  │  │  │  ├─ index.html
-   │  │  │  │  │  └─ registerStudents.early.test.ts.html
-   │  │  │  │  ├─ teachers.service.ts.html
-   │  │  │  │  └─ test
-   │  │  │  │     ├─ index.html
-   │  │  │  │     └─ registerStudents.early.test.ts.html
-   │  │  │  └─ utils
-   │  │  │     ├─ index.html
-   │  │  │     ├─ request
-   │  │  │     │  ├─ index.html
-   │  │  │     │  └─ index.ts.html
-   │  │  │     ├─ validate-config.ts.html
-   │  │  │     └─ validation.error.ts.html
-   │  │  ├─ student
-   │  │  │  └─ entities
-   │  │  │     ├─ index.html
-   │  │  │     └─ student.entity.ts.html
-   │  │  ├─ teachers
-   │  │  │  ├─ dto
-   │  │  │  │  ├─ request
-   │  │  │  │  │  ├─ index.html
-   │  │  │  │  │  ├─ register-student-teacher.dto.ts.html
-   │  │  │  │  │  ├─ retrieve-notification-request.dto.ts.html
-   │  │  │  │  │  └─ suspend-student-teacher.dto.ts.html
-   │  │  │  │  └─ response
-   │  │  │  │     ├─ get-common-student-teacher.dto.ts.html
-   │  │  │  │     ├─ index.html
-   │  │  │  │     └─ retrieve-notification-response.dto.ts.html
-   │  │  │  ├─ entities
-   │  │  │  │  ├─ index.html
-   │  │  │  │  └─ teacher.entity.ts.html
-   │  │  │  ├─ index.html
-   │  │  │  ├─ teachers.controller.ts.html
-   │  │  │  ├─ teachers.module.ts.html
-   │  │  │  └─ teachers.service.ts.html
-   │  │  └─ utils
-   │  │     ├─ index.html
-   │  │     ├─ request
-   │  │     │  ├─ index.html
-   │  │     │  └─ index.ts.html
-   │  │     ├─ validate-config.ts.html
-   │  │     └─ validation.error.ts.html
-   │  └─ lcov.info
-   ├─ dist
-   │  ├─ app.module.d.ts
-   │  ├─ app.module.js
-   │  ├─ app.module.js.map
-   │  ├─ config
-   │  │  ├─ app-config.type.d.ts
-   │  │  ├─ app-config.type.js
-   │  │  ├─ app-config.type.js.map
-   │  │  ├─ app.config.d.ts
-   │  │  ├─ app.config.js
-   │  │  ├─ app.config.js.map
-   │  │  ├─ config.type.d.ts
-   │  │  ├─ config.type.js
-   │  │  └─ config.type.js.map
-   │  ├─ constants
-   │  │  ├─ index.d.ts
-   │  │  ├─ index.js
-   │  │  └─ index.js.map
-   │  ├─ database
-   │  │  ├─ config
-   │  │  │  ├─ database-config.type.d.ts
-   │  │  │  ├─ database-config.type.js
-   │  │  │  ├─ database-config.type.js.map
-   │  │  │  ├─ database.config.d.ts
-   │  │  │  ├─ database.config.js
-   │  │  │  └─ database.config.js.map
-   │  │  ├─ data-source.d.ts
-   │  │  ├─ data-source.js
-   │  │  ├─ data-source.js.map
-   │  │  ├─ migrations
-   │  │  │  ├─ 1742413715632-InitSchema.d.ts
-   │  │  │  ├─ 1742413715632-InitSchema.js
-   │  │  │  └─ 1742413715632-InitSchema.js.map
-   │  │  ├─ seeds
-   │  │  │  └─ document
-   │  │  │     ├─ run-seed.d.ts
-   │  │  │     ├─ run-seed.js
-   │  │  │     ├─ run-seed.js.map
-   │  │  │     ├─ seed.module.d.ts
-   │  │  │     ├─ seed.module.js
-   │  │  │     ├─ seed.module.js.map
-   │  │  │     ├─ student
-   │  │  │     │  ├─ student-seed.module.d.ts
-   │  │  │     │  ├─ student-seed.module.js
-   │  │  │     │  ├─ student-seed.module.js.map
-   │  │  │     │  ├─ student-seed.service.d.ts
-   │  │  │     │  ├─ student-seed.service.js
-   │  │  │     │  └─ student-seed.service.js.map
-   │  │  │     └─ teacher
-   │  │  │        ├─ teacher-seed.module.d.ts
-   │  │  │        ├─ teacher-seed.module.js
-   │  │  │        ├─ teacher-seed.module.js.map
-   │  │  │        ├─ teacher-seed.service.d.ts
-   │  │  │        ├─ teacher-seed.service.js
-   │  │  │        └─ teacher-seed.service.js.map
-   │  │  ├─ typeorm-config.service.d.ts
-   │  │  ├─ typeorm-config.service.js
-   │  │  └─ typeorm-config.service.js.map
-   │  ├─ filter
-   │  │  ├─ http-exception.filter.d.ts
-   │  │  ├─ http-exception.filter.js
-   │  │  └─ http-exception.filter.js.map
-   │  ├─ main.d.ts
-   │  ├─ main.js
-   │  ├─ main.js.map
-   │  ├─ student
-   │  │  └─ entities
-   │  │     ├─ student.entity.d.ts
-   │  │     ├─ student.entity.js
-   │  │     └─ student.entity.js.map
-   │  ├─ teachers
-   │  │  ├─ dto
-   │  │  │  ├─ request
-   │  │  │  │  ├─ register-student-teacher.dto.d.ts
-   │  │  │  │  ├─ register-student-teacher.dto.js
-   │  │  │  │  ├─ register-student-teacher.dto.js.map
-   │  │  │  │  ├─ retrieve-notification-request.dto.d.ts
-   │  │  │  │  ├─ retrieve-notification-request.dto.js
-   │  │  │  │  ├─ retrieve-notification-request.dto.js.map
-   │  │  │  │  ├─ suspend-student-teacher.dto.d.ts
-   │  │  │  │  ├─ suspend-student-teacher.dto.js
-   │  │  │  │  └─ suspend-student-teacher.dto.js.map
-   │  │  │  └─ response
-   │  │  │     ├─ get-common-student-teacher.dto.d.ts
-   │  │  │     ├─ get-common-student-teacher.dto.js
-   │  │  │     ├─ get-common-student-teacher.dto.js.map
-   │  │  │     ├─ retrieve-notification-response.dto.d.ts
-   │  │  │     ├─ retrieve-notification-response.dto.js
-   │  │  │     └─ retrieve-notification-response.dto.js.map
-   │  │  ├─ entities
-   │  │  │  ├─ teacher.entity.d.ts
-   │  │  │  ├─ teacher.entity.js
-   │  │  │  └─ teacher.entity.js.map
-   │  │  ├─ teachers.controller.d.ts
-   │  │  ├─ teachers.controller.js
-   │  │  ├─ teachers.controller.js.map
-   │  │  ├─ teachers.module.d.ts
-   │  │  ├─ teachers.module.js
-   │  │  ├─ teachers.module.js.map
-   │  │  ├─ teachers.service.d.ts
-   │  │  ├─ teachers.service.js
-   │  │  └─ teachers.service.js.map
-   │  ├─ tsconfig.build.tsbuildinfo
-   │  └─ utils
-   │     ├─ request
-   │     │  ├─ index.d.ts
-   │     │  ├─ index.js
-   │     │  └─ index.js.map
-   │     ├─ validate-config.d.ts
-   │     ├─ validate-config.js
-   │     ├─ validate-config.js.map
-   │     ├─ validation.error.d.ts
-   │     ├─ validation.error.js
-   │     └─ validation.error.js.map
-   ├─ docker-compose.yaml
-   ├─ Dockerfile
-   ├─ docs
-   ├─ eslint.config.mjs
-   ├─ nest-cli.json
-   ├─ package-lock.json
-   ├─ package.json
-   ├─ README.md
-   ├─ src
-   │  ├─ app.module.ts
-   │  ├─ config
-   │  │  ├─ app-config.type.ts
-   │  │  ├─ app.config.ts
-   │  │  └─ config.type.ts
-   │  ├─ constants
-   │  │  └─ index.ts
-   │  ├─ database
-   │  │  ├─ config
-   │  │  │  ├─ database-config.type.ts
-   │  │  │  └─ database.config.ts
-   │  │  ├─ data-source.ts
-   │  │  ├─ migrations
-   │  │  │  └─ 1742413715632-InitSchema.ts
-   │  │  ├─ seeds
-   │  │  │  └─ document
-   │  │  │     ├─ run-seed.ts
-   │  │  │     ├─ seed.module.ts
-   │  │  │     ├─ student
-   │  │  │     │  ├─ student-seed.module.ts
-   │  │  │     │  ├─ student-seed.service.ts
-   │  │  │     │  └─ test
-   │  │  │     │     └─ student-seed.service.spec.ts
-   │  │  │     └─ teacher
-   │  │  │        ├─ teacher-seed.module.ts
-   │  │  │        ├─ teacher-seed.service.ts
-   │  │  │        └─ test
-   │  │  │           └─ teacher-seed.service.spec.ts
-   │  │  └─ typeorm-config.service.ts
-   │  ├─ filter
-   │  │  ├─ http-exception.filter.ts
-   │  │  └─ test
-   │  │     └─ http-exception.filter.spec.ts
-   │  ├─ main.ts
-   │  ├─ student
-   │  │  └─ entities
-   │  │     └─ student.entity.ts
-   │  ├─ teachers
-   │  │  ├─ dto
-   │  │  │  ├─ request
-   │  │  │  │  ├─ register-student-teacher.dto.ts
-   │  │  │  │  ├─ retrieve-notification-request.dto.ts
-   │  │  │  │  └─ suspend-student-teacher.dto.ts
-   │  │  │  └─ response
-   │  │  │     ├─ get-common-student-teacher.dto.ts
-   │  │  │     └─ retrieve-notification-response.dto.ts
-   │  │  ├─ entities
-   │  │  │  └─ teacher.entity.ts
-   │  │  ├─ teachers.controller.ts
-   │  │  ├─ teachers.module.ts
-   │  │  ├─ teachers.service.ts
-   │  │  └─ test
-   │  │     ├─ teachers.controller.spec.ts
-   │  │     └─ teachers.service.spec.ts
-   │  └─ utils
-   │     ├─ request
-   │     │  ├─ index.ts
-   │     │  └─ test
-   │     │     └─ index.spec.ts
-   │     ├─ test
-   │     │  ├─ validation.error.spec.ts
-   │     │  └─ vallidate-config.spec.ts
-   │     ├─ validate-config.ts
-   │     └─ validation.error.ts
-   ├─ test
-   │  └─ jest-e2e.json
-   ├─ tsconfig.build.json
-   └─ tsconfig.json
 
 ```
-│
+src
+├─ app.module.ts
+├─ config
+│  ├─ app-config.type.ts
+│  ├─ app.config.ts
+│  └─ config.type.ts
+├─ constants
+│  └─ index.ts
+├─ database
+│  ├─ config
+│  │  ├─ database-config.type.ts
+│  │  └─ database.config.ts
+│  ├─ data-source.ts
+│  ├─ migrations
+│  │  └─ index.ts
+│  ├─ seeds
+│  │  └─ document
+│  │     ├─ run-seed.ts
+│  │     ├─ seed.module.ts
+│  │     ├─ student
+│  │     │  ├─ student-seed.module.ts
+│  │     │  ├─ student-seed.service.ts
+│  │     │  └─ test
+│  │     │     └─ student-seed.service.spec.ts
+│  │     └─ teacher
+│  │        ├─ teacher-seed.module.ts
+│  │        ├─ teacher-seed.service.ts
+│  │        └─ test
+│  │           └─ teacher-seed.service.spec.ts
+│  └─ typeorm-config.service.ts
+├─ filter
+│  ├─ http-exception.filter.ts
+│  └─ test
+│     └─ http-exception.filter.spec.ts
+├─ main.ts
+├─ student
+│  └─ entities
+│     └─ student.entity.ts
+├─ teachers
+│  ├─ dto
+│  │  ├─ request
+│  │  │  ├─ register-student-teacher.dto.ts
+│  │  │  ├─ retrieve-notification-request.dto.ts
+│  │  │  └─ suspend-student-teacher.dto.ts
+│  │  └─ response
+│  │     ├─ get-common-student-teacher.dto.ts
+│  │     └─ retrieve-notification-response.dto.ts
+│  ├─ entities
+│  │  └─ teacher.entity.ts
+│  ├─ teachers.controller.ts
+│  ├─ teachers.module.ts
+│  ├─ teachers.service.ts
+│  └─ test
+│     ├─ teachers.controller.spec.ts
+│     └─ teachers.service.spec.ts
+└─ utils
+   ├─ request
+   │  ├─ index.ts
+   │  └─ test
+   │     └─ index.spec.ts
+   ├─ test
+   │  ├─ validation.error.spec.ts
+   │  └─ vallidate-config.spec.ts
+   ├─ validate-config.ts
+   └─ validation.error.ts
+
+```
 
 ## Prerequisites
 
